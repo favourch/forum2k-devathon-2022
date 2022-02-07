@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
     res.set({
         "Allow-access-Allow-Origin": '*'
     })
-    res.sendFile(__dirname + "/index.html");
+    return res.sendFile(__dirname + "/index.html");
 }).listen(port, () => {
     console.log(`Server is running at ${port}`)
 })
