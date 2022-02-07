@@ -2,9 +2,10 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 const port = process.env.PORT || 3000;
-const app = express()
+const app = express() 
+const publicDirectoryPath = path.join(__dirname, 'public')
 app.use(bodyParser.json())
-app.use(express.static('public'))
+app.use(express.static(publicDirectoryPath))
 app.use(bodyParser.urlencoded({
     extended: true
 }))
@@ -36,7 +37,7 @@ app.get("/", (req, res) => {
     res.set({
         "Allow-access-Allow-Origin": '*'
     })
-    return res.redirect('index.html')
+    return res.sendFile(__dirname + "/index.html");
 }).listen(port, () => {
     console.log(`Server is running at ${port}`)
 })
