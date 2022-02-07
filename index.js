@@ -31,13 +31,13 @@ app.post("/fetch", (req, res) => {
         }
         console.log("Message submitted successfully !")
     })
-    return res.redirect('done.html')
+    return res.redirect(__dirname + 'done.html')
 })
 app.get("/", (req, res) => {
     res.set({
         "Allow-access-Allow-Origin": '*'
     })
-    return res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/index.html");
 }).listen(port, () => {
     console.log(`Server is running at ${port}`)
 })
